@@ -23,4 +23,12 @@ public class Position {
         this.positionX = positionX;
         this.positionY = positionY;
     }
+
+    public int getPositionX() {
+        return this.positionX;
+    }
+
+    public int getPositionY() {
+        return positionY;
+    }
 }

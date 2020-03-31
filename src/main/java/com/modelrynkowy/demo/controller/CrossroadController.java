@@ -18,7 +18,7 @@ public class CrossroadController {
         this.crossroadService = crossroadService;
     }
 
-    @GetMapping(value = "/")
+    @GetMapping
     public List<Crossroad> getCrossroads() {
         return crossroadService.getCrossroads();
     }

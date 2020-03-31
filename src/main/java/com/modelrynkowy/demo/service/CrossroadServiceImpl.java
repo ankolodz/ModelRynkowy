@@ -11,6 +11,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 
+import static java.lang.StrictMath.abs;
+
 @Service
 public class CrossroadServiceImpl implements CrossroadService {
     private CrossroadRepository crossroadRepository;
@@ -29,7 +31,9 @@ public class CrossroadServiceImpl implements CrossroadService {
     @Override
     public void createCrossroad() {
         Random random = new Random();
-        Position position = positionRepository.save(new Position(random.nextInt(), random.nextInt()));
+        int x = abs(random.nextInt())%1200;
+        int y = abs(random.nextInt())%700;
+        Position position = positionRepository.save(new Position(x,y));
         crossroadRepository.save(new Crossroad(new HashSet<>(), position));
     }
 }

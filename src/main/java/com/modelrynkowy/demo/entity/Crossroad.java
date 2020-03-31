@@ -31,4 +31,8 @@ public class Crossroad {
         this.roads = roads;
         this.position = position;
     }
+
+    public Position getPosition() {
+        return this.position;
+    }
 }
