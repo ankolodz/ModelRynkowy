@@ -27,7 +27,7 @@ public class NetworkEdgeStyle extends DefaultNetworkStyleGIS{
 		NetworkEdge<Object> networkEdge = (NetworkEdge<Object>)edge;
 		float coef = (float) (1.0 * networkEdge.getRoad().getPrice() / this.maxPrice);
 		if (coef > 1.0) {coef = 1.0f;}
-		return new Color((1.0f - coef) * 0.7f, 0.05f * (float)(getLineWidth(edge)-1.0), coef * 0.7f);
+		return new Color((1.0f - coef) * 0.7f, 0.15f * (float)(getLineWidth(edge)-1.0), coef * 0.7f);
 	}
 
 
