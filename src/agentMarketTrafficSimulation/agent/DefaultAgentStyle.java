@@ -21,9 +21,9 @@ public class DefaultAgentStyle extends DefaultMarkStyle<DefaultAgent> {
 		super();
 		this.colorMap = new HashMap<>();
 		colorMap.put(0, Color.BLUE);
-		colorMap.put(1, Color.BLUE);
-		colorMap.put(2, Color.BLUE);
-		colorMap.put(3, Color.BLUE);
+		colorMap.put(1, Color.GREEN);
+		colorMap.put(2, Color.RED);
+		colorMap.put(3, Color.YELLOW);
 		this.patternMap = new HashMap<>();
 		patternMap.put(1, PatternFactory.PATTERN_SQUARE);
 		patternMap.put(2, PatternFactory.PATTERN_CIRCLE);

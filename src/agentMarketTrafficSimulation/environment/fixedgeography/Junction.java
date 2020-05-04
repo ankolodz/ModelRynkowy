@@ -71,4 +71,14 @@ public class Junction implements FixedGeography, Comparable<Junction> {
 	public int compareTo(Junction o) {
 		return o.coord.compareTo(this.coord);
 	}
+	
+	public boolean checkRoadsJunction(Road road, Junction junction) {
+		for (int i = 0; i < roads.size(); i++) {
+			if (!road.equals(roads.get(i)) && roads.get(i).checkJunction(junction)) {
+				System.out.println("Droga dwukierunkowa!");
+				return true;
+			}
+		}
+		return false;
+	}
 }

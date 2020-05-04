@@ -26,6 +26,7 @@ import agentMarketTrafficSimulation.context.utils.NetworkEdgeFactory;
 import agentMarketTrafficSimulation.context.utils.SpatialIndexManager;
 import agentMarketTrafficSimulation.environment.fixedgeography.Junction;
 import agentMarketTrafficSimulation.environment.fixedgeography.Road;
+import agentMarketTrafficSimulation.environment.fixedgeography.FixedGeography;
 import repast.simphony.context.Context;
 import repast.simphony.context.DefaultContext;
 import repast.simphony.context.space.gis.GeographyFactoryFinder;
@@ -60,8 +61,8 @@ public class ContextManager implements ContextBuilder<Object> {
 	private static List<Junction> junctions;
 	private static List<Junction> gates;
 	private static List<Road> roads;
-	// private static final String gisDataDir = "./data/gis_data/oldMap/";
-	private static final String gisDataDir = "./data/gis_data/gesta/";
+	private static final String gisDataDir = "./data/gis_data/rzadka/";
+	// private static final String gisDataDir = "./data/gis_data/gesta/";
 
 	private static final StatsGenerator statsGenerator = new StatsGenerator();
 	public static Random rand;
@@ -122,6 +123,7 @@ public class ContextManager implements ContextBuilder<Object> {
 		roadProjection = GeographyFactoryFinder.createGeographyFactory(null).createGeography(ROAD_GEOGRAPHY,
 				roadContext, new GeographyParameters<Road>(new SimpleAdder<Road>()));
 		String roadFile = gisDataDir + ROAD_SHAREFILE;
+		
 		GISFunctions.readShapefile(Road.class, roadFile, roadProjection, roadContext);
 		mainContext.addSubContext(roadContext);
 		SpatialIndexManager.createIndex(roadProjection, Road.class);

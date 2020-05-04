@@ -220,5 +220,12 @@ public class Road implements FixedGeography {
 			this.traficJamRisk = risk;
 		}
 	}
-
+	
+	public boolean checkJunction(Junction junction) {
+		return junctions.contains(junction);
+	}
+	
+	public boolean isRoadBidirectional() {
+		return junctions.get(0).checkRoadsJunction(this, junctions.get(1));
+	}
 }
