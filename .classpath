@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="con" path="GROOVY_SUPPORT"/>
+	<classpathentry kind="con" path="GROOVY_DSL_SUPPORT"/>
+	<classpathentry kind="con" path="REPAST_SIMPHONY_SUPPORT"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="/Users/oscarteeninga/Downloads/Model_Rynkowy/lib/mockito-all-1.10.8.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.launching.macosx.MacOSXType/Java SE 8 [1.8.0_241]"/>
+	<classpathentry kind="lib" path="lib/junit-jupiter-api-5.5.0.jar"/>
+	<classpathentry kind="lib" path="lib/junit-platform-commons-1.5.0.jar"/>
+	<classpathentry kind="lib" path="lib/mockito-all-1.10.8.jar"/>
+	<classpathentry kind="lib" path="lib/opentest4j-1.2.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

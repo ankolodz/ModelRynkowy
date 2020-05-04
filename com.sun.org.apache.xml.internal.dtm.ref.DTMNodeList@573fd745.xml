@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<List>
+    <road cost="5.0">
+<startJunction Coord_X="0.44600806" Coord_Y="0.26143354" JunctionID="31"/>
+<endJunction Coord_X="0.6374263" Coord_Y="0.3531941" JunctionID="25"/>
+</road>
+    <road cost="5.0">
+<startJunction Coord_X="0.312406" Coord_Y="0.10349099" JunctionID="5"/>
+<endJunction Coord_X="0.44600806" Coord_Y="0.26143354" JunctionID="31"/>
+</road>
+</List>
