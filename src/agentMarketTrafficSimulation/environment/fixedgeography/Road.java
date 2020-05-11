@@ -101,6 +101,14 @@ public class Road implements FixedGeography {
 	public double getPrice() {
 		return this.price;
 	}
+	
+	public void increasePrice() {
+		this.price = this.price + 10.0d;
+	}
+	
+	public void decreasePrice() {
+		this.price = Math.max(0.0d, this.price - 0.3d);
+	}
 
 	public NetworkEdge<Junction> getEdge() {
 		return edge;

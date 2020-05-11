@@ -76,6 +76,7 @@ public class TravelUtils {
 		for (Road r : roads) {
 			if (r.getPrice() < min)
 				min = r.getPrice();
+			r.decreasePrice();
 		}
 		return (min - 0.01);
 	}

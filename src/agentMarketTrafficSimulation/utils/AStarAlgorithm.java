@@ -125,11 +125,15 @@ public class AStarAlgorithm extends PathFindingAlgorithm {
 					System.out.println("ERROR Weight " + edge.getWeight() + " - " + minWeight + " / (" + maxWeight
 							+ " - " + minWeight + ")");
 				}
-				return (time * ((edge.getRoad().getTravelTime() - minTime) / (maxTime - minTime))
+				double distance = (time * ((edge.getRoad().getTravelTime() - minTime) / (maxTime - minTime))
 						+ dist * ((edge.getRoad().getLength() - minDist) / (maxDist - minDist))
 						+ cost * ((edge.getRoad().getOwner().getPriceForRoad(edge.getRoad(), agent) - minCost)
 								/ (maxCost - minCost))
-						+ 0.2 * ((edge.getWeight() - minWeight) / (maxWeight - minWeight)));
+						+ 0 * ((edge.getWeight() - minWeight) / (maxWeight - minWeight)));
+				if(cost == 1.0d) {
+					System.out.println("Road price: " + edge.getRoad().getOwner().getPriceForRoad(edge.getRoad(), agent) + ", minCost: " + minCost + ", maxCost: " + maxCost);
+				}
+				return distance;
 			}
 		}
 		throw new RuntimeException("Should not happen");

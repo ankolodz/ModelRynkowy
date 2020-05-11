@@ -26,7 +26,6 @@ import agentMarketTrafficSimulation.context.utils.NetworkEdgeFactory;
 import agentMarketTrafficSimulation.context.utils.SpatialIndexManager;
 import agentMarketTrafficSimulation.environment.fixedgeography.Junction;
 import agentMarketTrafficSimulation.environment.fixedgeography.Road;
-import agentMarketTrafficSimulation.environment.fixedgeography.FixedGeography;
 import repast.simphony.context.Context;
 import repast.simphony.context.DefaultContext;
 import repast.simphony.context.space.gis.GeographyFactoryFinder;
@@ -61,8 +60,8 @@ public class ContextManager implements ContextBuilder<Object> {
 	private static List<Junction> junctions;
 	private static List<Junction> gates;
 	private static List<Road> roads;
-	private static final String gisDataDir = "./data/gis_data/rzadka/";
-	// private static final String gisDataDir = "./data/gis_data/gesta/";
+//	private static final String gisDataDir = "./data/gis_data/rzadka/";
+	 private static final String gisDataDir = "./data/gis_data/gesta/";
 
 	private static final StatsGenerator statsGenerator = new StatsGenerator();
 	public static Random rand;
@@ -109,8 +108,7 @@ public class ContextManager implements ContextBuilder<Object> {
 			createJunctions(gisDataDir);
 			buildRoadNetwork(maxRoadCapacity);
 			buildSupervisors(supervisorNumber);
-			createAgents(wholeNumber, oneNumber, twoNumber, threeNumber, timePriorityNumber, distancePriorityNumber,
-					costPriorityNumber);
+			createAgents(wholeNumber, oneNumber, twoNumber, threeNumber, timePriorityNumber, distancePriorityNumber, costPriorityNumber);
 			createSchedule();
 		} catch (Exception e) {
 			e.printStackTrace();

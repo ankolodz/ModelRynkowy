@@ -23,6 +23,7 @@ public class ReservationHolder {
 			initializeRoadReservationsList(road);
 		}
 		addReservationToExistingAgent(agent, road);
+		road.increasePrice();
 	}
 
 	public void addAgentToRoadQueue(TravellerAgent agent, Road road) {

@@ -91,26 +91,28 @@ public class SupervisorAgent implements IAgent {
 
 	// This uses agent to determine if he was on the road before so he can't return
 	public double getPriceForRoad(Road road, DefaultAgent agent2) {
-		if (roadAndAgents.containsKey(road)) {
-			if (roadAndAgents.get(road).contains(agent2)) {
-				return (Double.MAX_VALUE / 2);
-			}
-		}
-		List<TravellerAgent> agents = reservations.getRoadReservations(road);
-		double price;
-		if (agents == null) {
-			road.setPrice(basePrice);
-		} else {
-			for (TravellerAgent agent : agents) {
-				BidFunctionUtils.setUpBidFunction(agent.getBidFunction(), agent.getTime(), agent.getDist(),
-						agent.getCost(), 0.2, agent.getRisk(), road.getTravelTime(), road.getLength(),
-						road.getEdge().getWeight(), road.getTrafficJamRisk());
-			}
-
-			Map<TravellerAgent, Double> agentMap = BidFunctionUtils.getPriceAndAgentsBasedOnBidFunctions(agents, road);
-			// price = agentMap.get(agents.get(0));
-		}
-		// road.setPrice(basePrice, priceGrow);
+//		if (roadAndAgents.containsKey(road)) {
+//			if (roadAndAgents.get(road).contains(agent2)) {
+//				return (Double.MAX_VALUE / 2);
+//			}
+//		}
+//		List<TravellerAgent> agents = reservations.getRoadReservations(road);
+//		double price;
+//		if (agents == null) {
+//			road.setPrice(basePrice);
+//		} else {
+//			for (TravellerAgent agent : agents) {
+//				BidFunctionUtils.setUpBidFunction(agent.getBidFunction(), agent.getTime(), agent.getDist(),
+//						agent.getCost(), 0.2, agent.getRisk(), road.getTravelTime(), road.getLength(),
+//						road.getEdge().getWeight(), road.getTrafficJamRisk());
+//			}
+//
+//			Map<TravellerAgent, Double> agentMap = BidFunctionUtils.getPriceAndAgentsBasedOnBidFunctions(agents, road);
+//			// price = agentMap.get(agents.get(0));
+//		}
+//		road.setPrice(basePrice, priceGrow);
+//		Random random = new Random();
+//		road.setPrice(random.nextDouble() * 290 + 10);
 		return road.getPrice();
 	}
 
@@ -140,8 +142,7 @@ public class SupervisorAgent implements IAgent {
 
 	// ----------set road weight depending on reservation count--------------
 	private void setRoadWeigth(Road road) {
-		road.getEdge()
-				.setWeight((reservations.getQueueLength(road) * 0.5 + road.getRoadReservations()) / road.getLength());
+		road.getEdge().setWeight((reservations.getQueueLength(road) * 0.5 + road.getRoadReservations()) / road.getLength());
 	}
 
 	// ------------------------------------------------------------------------
