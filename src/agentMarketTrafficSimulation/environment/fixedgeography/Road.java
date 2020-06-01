@@ -24,6 +24,9 @@ public class Road implements FixedGeography {
 	private int roadReservations = 0;
 	private double length;
 	private int agentsOnRoad = 0;
+	
+	private double stepPrice = 2.0;
+	private double stepPunishmentPrice = 0.5;
 
 	private double traficJamRisk;
 
@@ -95,7 +98,7 @@ public class Road implements FixedGeography {
 	}
 
 	public void setPrice(double price) {
-		this.price = price;
+//		this.price = price;
 	}
 
 	public double getPrice() {
@@ -103,11 +106,20 @@ public class Road implements FixedGeography {
 	}
 	
 	public void increasePrice() {
-		this.price = this.price + 10.0d;
+		this.price = this.price + stepPrice;
+		if (this.price > 300){
+			this.price = 300;
+			stepPrice = Math.max(0.1,stepPrice-0.1);
+			stepPunishmentPrice += 1;
+		}
 	}
-	
 	public void decreasePrice() {
-		this.price = Math.max(0.0d, this.price - 0.3d);
+		this.price = this.price - stepPunishmentPrice;
+				if (this.price < 0){
+			this.price = 1.0;
+			stepPrice += 0.1;
+			stepPunishmentPrice = Math.max (stepPunishmentPrice -1, 1);
+		}
 	}
 
 	public NetworkEdge<Junction> getEdge() {
@@ -165,9 +177,9 @@ public class Road implements FixedGeography {
 	}
 
 	public void decrementRoadReservations() {
-		if (roadReservations == (int) roadCapacity) {
-			roadCapacity *= 1.1;
-		}
+//		if (roadReservations == (int) roadCapacity) {
+//			roadCapacity *= 1.1;
+//		}
 		roadReservations--;
 	}
 

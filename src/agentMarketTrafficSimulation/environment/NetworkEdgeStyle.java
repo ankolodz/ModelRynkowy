@@ -12,13 +12,13 @@ import repast.simphony.parameter.Parameters;
 import repast.simphony.space.graph.RepastEdge;
 import repast.simphony.visualization.gis3D.style.DefaultNetworkStyleGIS;
 
-public class NetworkEdgeStyle extends DefaultNetworkStyleGIS{
+public class NetworkEdgeStyle extends DefaultNetworkStyleGIS {
 	
 	Integer maxPrice;
 	
 	public NetworkEdgeStyle() {
 		Parameters params = RunEnvironment.getInstance().getParameters();
-		this.maxPrice = params.getInteger("basePrice");
+		this.maxPrice = 300;//params.getInteger("basePrice");
 	}
 	
 	

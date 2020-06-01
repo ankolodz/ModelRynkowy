@@ -57,8 +57,7 @@ public class AStarAlgorithm extends PathFindingAlgorithm {
 //		return 0.0; // this simulates the Dijkstra algorithm. Should ultimately vary somehow.
 	}
 
-	private void findMinimalDistances(Junction node, Junction target, double time, double cost, double dist,
-			DefaultAgent agent) {
+	private void findMinimalDistances(Junction node, Junction target, double time, double cost, double dist, DefaultAgent agent) {
 		List<Junction> adjacentNodes = getNeighbors(node);
 		for (Junction neighbor : adjacentNodes) {
 			if (settledNodes.contains(neighbor))
