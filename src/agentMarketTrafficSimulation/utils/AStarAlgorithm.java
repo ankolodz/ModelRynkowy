@@ -129,9 +129,6 @@ public class AStarAlgorithm extends PathFindingAlgorithm {
 						+ cost * ((edge.getRoad().getOwner().getPriceForRoad(edge.getRoad(), agent) - minCost)
 								/ (maxCost - minCost))
 						+ 0 * ((edge.getWeight() - minWeight) / (maxWeight - minWeight)));
-				if(cost == 1.0d) {
-					System.out.println("Road price: " + edge.getRoad().getOwner().getPriceForRoad(edge.getRoad(), agent) + ", minCost: " + minCost + ", maxCost: " + maxCost);
-				}
 				return distance;
 			}
 		}
