@@ -10,8 +10,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+
+//import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Collections;
+import java.util.*;
 
 import agentMarketTrafficSimulation.agent.AgentType;
 import agentMarketTrafficSimulation.agent.DefaultAgent;
@@ -33,6 +37,7 @@ public class StatsGenerator {
 	private static Path agentPriorityDistance;
 	private static Path agentPriorityTime;
 	private static Path agentCurrentToReserved;
+	private static Path roadReservationsQuantiles;
 
 	public void generateStats(ContextManager contextManager) {
 		if (stepNum == 0) {
@@ -86,6 +91,14 @@ public class StatsGenerator {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			lines.clear();
+			lines.add("step\t five\t six\t seven\t eight\t nine");
+			try {
+				saveToFile(roadReservationsQuantiles, lines);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
 		}
 		try {
 			generateAgentStats(ContextManager.getAgentContext().getObjects(DefaultAgent.class));
@@ -160,6 +173,27 @@ public class StatsGenerator {
 	private void generateRoadStats(IndexedIterable<Road> roads) throws IOException {
 		getPrice(roads);
 		getReservations(roads);
+		getReservationsQuantiles(roads);
+	}
+	
+	private void getReservationsQuantiles(IndexedIterable<Road> roads) throws IOException {
+		ArrayList<Integer> roadsLoad = new ArrayList<>();
+		
+		for (Road road : roads) {
+			roadsLoad.add(road.getAgentsOnRoad());
+		}
+		Collections.sort(roadsLoad);
+
+		int first = roadsLoad.size()/10;
+		int median = 5*first;
+		int sixth = 6*first;
+		int seventh = 7*first;
+		int eighth = 8*first;
+		int ninth = 9*first;
+		
+		List<String> lines = new ArrayList<>();
+		lines.add(stepNum + "\t" + roadsLoad.get(median) + "\t" + roadsLoad.get(sixth) + "\t" + roadsLoad.get(seventh) + "\t" + roadsLoad.get(eighth) + "\t" + roadsLoad.get(ninth));
+		saveToFile(roadReservationsQuantiles, lines);
 	}
 
 	private void getPrice(IndexedIterable<Road> roads) throws IOException {
@@ -425,6 +459,7 @@ public class StatsGenerator {
 		roadPrice = Paths.get("./stats/roads_price.txt");
 		roadReservations = Paths.get("./stats/roads_reservations.txt");
 		agentCurrentToReserved = Paths.get("./stats/Current_to_reserved.txt");
+		roadReservationsQuantiles = Paths.get("./stats/roads_reservations_quantiles.txt");
 
 		agentPriorityMoney = Paths.get("./stats/priority/agents_money.txt");
 		agentPriorityDistance = Paths.get("./stats/priority/agents_distance.txt");
@@ -444,5 +479,6 @@ public class StatsGenerator {
 		agentPriorityDistance.toFile().delete();
 		agentPriorityTime.toFile().delete();
 		agentCurrentToReserved.toFile().delete();
+		roadReservationsQuantiles.toFile().delete();
 	}
 }
