@@ -110,6 +110,24 @@ def print_roads_reservations(data):
     a1.set_xlabel('step')
     a1.set_ylabel('Variation')
     plt.savefig('{}/roads_reservation.png'.format(dest_dir))
+    
 
 roads_reservations_data = pd.read_csv('{}roads_reservations.txt'.format(source_dir), '\t')
 print_roads_reservations(roads_reservations_data)
+
+def roads_reservation_quantiles(data):
+    figure = plt.figure(figsize=FIG_SIZE)
+    plt.plot(data['step'], data[' five'], label="1/2")
+    plt.plot(data['step'], data[' six'], label="6/10")
+    plt.plot(data['step'], data[' seven'], label="7/10")
+    plt.plot(data['step'], data[' eight'], label="8/10")
+    plt.plot(data['step'], data[' nine'], label="9/10")
+    plt.legend()
+    plt.grid()
+    plt.xlabel('step')
+    plt.ylabel('Reservation count on roads')
+    plt.title('Road reservation quantiles')
+    plt.savefig('{}/roads_reservation_quantiles.png'.format(dest_dir))
+    
+roads_reservation_quantiles_data = pd.read_csv('{}roads_reservations_quantiles.txt'.format(source_dir), '\t')
+roads_reservation_quantiles(roads_reservation_quantiles_data)
