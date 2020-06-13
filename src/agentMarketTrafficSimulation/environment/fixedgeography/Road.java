@@ -97,10 +97,6 @@ public class Road implements FixedGeography {
 		return this.junctions;
 	}
 
-	public void setPrice(double price) {
-//		this.price = price;
-	}
-
 	public double getPrice() {
 		return this.price;
 	}

@@ -150,7 +150,6 @@ public class SupervisorAgent implements IAgent {
 		List<TravellerAgent> agents = reservations.getRoadReservations(road);
 		double price;
 		if (agents == null) {
-			road.setPrice(basePrice);
 		} else {
 			for (TravellerAgent agent : agents) {
 				BidFunctionUtils.setUpBidFunction(agent.getBidFunction(), agent.getTime(), agent.getDist(),

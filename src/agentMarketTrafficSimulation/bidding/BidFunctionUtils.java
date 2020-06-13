@@ -67,8 +67,6 @@ public class BidFunctionUtils {
 
 		makeEqualPrice(successfullAgents, new Double(roadPrice));
 
-		road.setPrice(roadPrice);
-
 		return successfullAgents;
 	}
 
