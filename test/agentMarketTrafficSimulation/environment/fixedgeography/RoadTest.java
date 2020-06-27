@@ -50,7 +50,6 @@ public class RoadTest {
 		
 		road.setSpeed(speed);
 		road.setCapacity(capacity);
-		road.setPrice(price);
 	}
 	
 	@Test

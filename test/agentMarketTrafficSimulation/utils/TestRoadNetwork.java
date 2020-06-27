@@ -122,9 +122,6 @@ public class TestRoadNetwork {
 				networkEdge5, networkEdge6, networkEdge7, networkEdge8, networkEdge9};
 		networkEdges = new ArrayList<>(Arrays.asList(networkEdgeArray));
 		double basePrice = 300.0;
-		for (Road road : roads) {
-			road.setPrice(basePrice);
-		}
 		double baseSpeed = 60.0;
 		for (Road road : roads) {
 			road.setSpeed(baseSpeed);
