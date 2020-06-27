@@ -79,8 +79,8 @@ print_current_to_reserved(current_to_reserved_data)
 
 def print_roads_price(data):
     figure, (a0, a1) = plt.subplots(2, 1, gridspec_kw = {'height_ratios':[3, 1]}, figsize=FIG_SIZE, sharex=True)
-    a0.plot(data['step'], data[' averageRoadPrice'], label="Average")
     a0.plot(data['step'], data[' maxPrice'], label="Max")
+    a0.plot(data['step'], data[' averageRoadPrice'], label="Average")
     a0.legend()
     a0.grid()
     a0.set_ylabel('Price')
@@ -102,7 +102,7 @@ def print_roads_reservations(data):
     a0.plot(data['step'], data[' maxReservations'], label="Max")
     a0.legend()
     a0.grid()
-    a0.set_ylabel('Price')
+    a0.set_ylabel('Quantity')
     a0.set_title('Road reservation')
     a1.plot(data['step'], data[' variation'], label="Variation")
     a1.legend()
